@@ -225,7 +225,7 @@ class ObjectWriter(object):
             if serializer.can_write(obj):
                 return serializer.write(obj)
 
-        if isinstance(obj, (type, types.ClassType)):
+        if isinstance(obj, (type, types.ClassType, zope.interface.interface.InterfaceClass)):
             # We frequently store class and function paths as meta-data, so we
             # need to be able to properly encode those.
             return {'_py_type': 'type',
